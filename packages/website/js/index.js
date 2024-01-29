@@ -1,11 +1,19 @@
 'use strict';
 
-const $table = document.querySelector('table');
+import { Canvas } from './canvas.js';
 
-const renderTable = (grid) => {
-  console.log(grid, $table);
+const $canvas = document.getElementById('canvas');
+const $color_picker = document.getElementById('color-picker');
+
+
+window.onload = window.onresize = function() {
+  // set canvas dimensions to window dimensions
+  $canvas.width = window.innerWidth;
+  $canvas.height = window.innerHeight;
 };
 
-fetch('http://localhost:3003/canvas')
-  .then((res) => res.json())
-  .then(renderTable);
+let canvas = new Canvas($canvas);
+
+$canvas.addEventListener('click', async (e) => {
+  await canvas.handleClick(e, $color_picker.value);
+});

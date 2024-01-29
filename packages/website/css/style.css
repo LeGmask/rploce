@@ -1,9 +1,30 @@
-table {
-  border-spacing: 0;
+@import url("./reset.css");
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+
+body {
+    font-family: 'Rubik', sans-serif;
+    background-color: #eceff4;
 }
 
-td {
-  width: 1em;
-  height: 1em;
-  border: 0.5px solid black;
+.corlor-picker {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding:  20px;
+    background-color: #d8dee9;
+    border-radius: 30px;
 }
+
+.corlor-picker > input {
+    width: 2em;
+    height: 2em;
+    border: none;
+    padding: 0;
+
+}
+
