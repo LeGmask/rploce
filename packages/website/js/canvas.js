@@ -28,6 +28,8 @@ export class Canvas {
   }
 
   render() {
+    if (!this.grid) return;
+
     for (let i = 0; i < this.grid.length; i++) {
       for (let j = 0; j < this.grid[0].length; j++) {
         this.ctx.fillStyle = this.grid[i][j];
@@ -58,5 +60,9 @@ export class Canvas {
     this.grid = await response.json();
     console.log(this.grid);
     this.render(); // flush canvas
+  }
+
+  set_pixel(x, y, color) {
+    this.grid[x][y] = color;
   }
 }

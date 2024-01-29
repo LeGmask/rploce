@@ -1,6 +1,7 @@
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { writeFileSync } from 'node:fs';
+import { io } from './socket.js';
 
 export type T_Canvas = string[][];
 
@@ -49,6 +50,7 @@ export class Canvas {
 
     this._canvas[x][y] = color;
     this.save_canvas(); // backup to the file
+    io.emit('update_pixel', { x, y, color }); // send to all clients the update
   }
 
   private save_canvas(): void {
